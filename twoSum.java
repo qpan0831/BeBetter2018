@@ -1,39 +1,20 @@
-import java.util.HashMap;
-import java.util.Map;
-class twoSum{
-
-    public static void main(String[] args){
-        int[] nums ={2,5,7};
-        int target=7;
-        int[] result=twoSum.twoSum(nums, target);
-        for(int a:result)
-        {
-            System.out.print(a+" ");
-        }
-
-    }
-    public static int[] twoSum(int[] nums, int target)
-    {
-        HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+            Map<Integer,Integer> map = new HashMap<>();
+            int[] res = new int[2];
         for(int i=0;i<nums.length;i++)
         {
             map.put(nums[i],i);
-            
         }
-        
-        for(int i=0;i<nums.length;i++)
-        {
-            int diff=target-nums[i];
-            if(map.containsKey(diff))
+        for (int i=0;i<nums.length;i++){
+            int temp = target-nums[i];
+            if(map.containsKey(temp)&& map.get(temp)!=i)
             {
-                if(map.get(diff)!=i){
-                int result[]={i,map.get(diff)};
-                return result;
-                }
-           
+              
+                res[0]=i;
+                res[1]=map.get(temp);
             }
         }
-        
-        return null;
+    return res;
     }
 }
